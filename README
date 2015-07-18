@@ -1,0 +1,25 @@
+Arduino clock width stopper and alarm
+ver1.0
+--------------------------------------
+Requirements:
+-Arduino board
+-LCD shield
+-RTC module
+
+Features:
+-Display date, time
+-Set time on RTC module
+-Set alarm
+-Turn backlight on/off
+-Start, stop, reset stopper
+-Alarm on given time flash LCD light
+
+Usage:
+-Find out!
+
+Todo:
+-Optimalize code
+-Set bigger keypress time when in menu
+-Whatever!
+
+bsvdoom-2k15
