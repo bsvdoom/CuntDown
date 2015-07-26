@@ -1,4 +1,4 @@
-﻿#include <EventManager.h>
+#include <EventManager.h>
 #include <Time.h>
 #include <DS3232RTC.h>
 #include <Wire.h>
@@ -66,13 +66,16 @@ void UpdateTime() {
 void SetAlarm() {
   tmElements_t ct;
   RTC.read(ct);
- if(AlarmSetTime.Year >= ct.Year
- && AlarmSetTime.Month >= ct.Month
- && AlarmSetTime.Day >= ct.Day
- //&& AlarmSetTime.Hour >= ct.Hour
- //&& AlarmSetTime.Minute > ct.Minute
+ if(AlarmSetTime.Second > ct.Second && AlarmSetTime.Minute == ct.Minute && AlarmSetTime.Hour == ct.Hour && AlarmSetTime.Day == ct.Day && AlarmSetTime.Month == ct.Month && AlarmSetTime.Year == ct.Year
+  || AlarmSetTime.Minute > ct.Minute && AlarmSetTime.Hour == ct.Hour && AlarmSetTime.Day == ct.Day && AlarmSetTime.Month == ct.Month && AlarmSetTime.Year == ct.Year
+  || AlarmSetTime.Hour > ct.Hour && AlarmSetTime.Day == ct.Day && AlarmSetTime.Month == ct.Month && AlarmSetTime.Year == ct.Year
+  || AlarmSetTime.Day > ct.Day && AlarmSetTime.Month == ct.Month && AlarmSetTime.Year == ct.Year
+  || AlarmSetTime.Month > ct.Month && AlarmSetTime.Year == ct.Year
+  || AlarmSetTime.Year > ct.Year
  ) {
   AlarmIsSet = true; 
+ } else {
+  AlarmIsSet = false;
  }
 }
 
