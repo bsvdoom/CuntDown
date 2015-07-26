@@ -69,8 +69,8 @@ void SetAlarm() {
  if(AlarmSetTime.Year >= ct.Year
  && AlarmSetTime.Month >= ct.Month
  && AlarmSetTime.Day >= ct.Day
- && AlarmSetTime.Hour >= ct.Hour
- && AlarmSetTime.Minute > ct.Minute
+ //&& AlarmSetTime.Hour >= ct.Hour
+ //&& AlarmSetTime.Minute > ct.Minute
  ) {
   AlarmIsSet = true; 
  }
@@ -780,9 +780,12 @@ void NavigateListener( int event, int param ) { //navigation logic
 
 void AlarmListener( int event, int param ) {
   if(AlarmIsSet 
-  && CurrentTime.Hour == AlarmSetTime.Hour
-  && CurrentTime.Minute == AlarmSetTime.Minute 
-  && CurrentTime.Second == AlarmSetTime.Second ) {
+	&& CurrentTime.Year == AlarmSetTime.Year
+	&& CurrentTime.Month == AlarmSetTime.Month
+	&& CurrentTime.Day == AlarmSetTime.Day
+	&& CurrentTime.Hour == AlarmSetTime.Hour
+	&& CurrentTime.Minute == AlarmSetTime.Minute 
+	&& CurrentTime.Second == AlarmSetTime.Second ) {
     Window = W_ALARM;
   }
 }
